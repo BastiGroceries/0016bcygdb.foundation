@@ -54,8 +54,12 @@
   <div class="console" id="console"></div>
   <div class="alert">🛑 Clearance Level 5 Required</div>
 
+  <audio id="typingSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3" preload="auto"></audio>
+
   <script>
     const consoleEl = document.getElementById('console');
+    const typingSound = document.getElementById('typingSound');
+
     const messages = [
       "> Logging into Level 5 Admin Access...",
       "> Access Denied.",
@@ -70,6 +74,11 @@
     let messageIndex = 0;
     let charIndex = 0;
 
+    function playTypingSound() {
+      typingSound.currentTime = 0;
+      typingSound.play();
+    }
+
     function typeNextChar() {
       if (messageIndex >= messages.length) return;
       const message = messages[messageIndex];
@@ -78,6 +87,7 @@
         consoleEl.innerHTML += message.charAt(charIndex);
         charIndex++;
         consoleEl.scrollTop = consoleEl.scrollHeight;
+        playTypingSound();
         setTimeout(typeNextChar, 50); // typing speed in ms
       } else {
         consoleEl.innerHTML += "<br>";
