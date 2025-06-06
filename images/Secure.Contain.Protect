@@ -1,2 +1,41 @@
-# SCP (Secure.Contain.Protect)
-
+╔══════════════════════════════════════════════════════════╗
+║ ████ ██████ ████ ██████ ████ ██████ ██████ ████ ██████ ║
+║ ██░░██░░██ ██░░██░░██ ██░░██░░██ ██░░██░░██ ██░░██░░██ ║
+║ ██░░██░░██ ██░░██░░██ ██░░██░░██ ██░░██░░██ ██░░██░░██ ║
+║ ████ ██████ ████ ██████ ████ ██████ ██████ ████ ██████ ║
+║                                                          ║
+║ Encrypted Data Block: Version 9.1 - Do Not Edit          ║
+║ -------------------------------------------------------- ║
+║ ⊕ 3F2A C9B4 E7D0 1A2F 5C8E 9B7D 0F1C 3D4E               ║
+║ ⊕ 7B9E 6F4D 0A1B 2C3D 4E5F 6A7B 8C9D E0F1               ║
+║ ⊕ 0011 2233 4455 6677 8899 AABB CCDD EEFF               ║
+║ ⊕ 12AB 34CD 56EF 78AB 90CD 12EF 34AB 56CD               ║
+║                                                          ║
+║ // WARNING: Unauthorized access to this file will        ║
+║ // initiate self-destruct protocols.                      ║
+║                                                          ║
+║ :@SYS.LOCK = TRUE                                        ║
+║ :@ACCESS.KEY = ************                              ║
+║                                                          ║
+║ function _decrypt(data) {                                ║
+║     var key = [0xDE, 0xAD, 0xBE, 0xEF];                 ║
+║     var out = [];                                        ║
+║     for(var i=0; i<data.length; i++) {                   ║
+║         out[i] = data[i] ^ key[i % key.length];          ║
+║     }                                                   ║
+║     return out;                                          ║
+║ }                                                       ║
+║                                                          ║
+║ // Initialization sequence...                            ║
+║ #INIT SEQ: 0xFA 0xCE 0xB0 0x0C 0xDE 0xAD 0xC0 0xDE      ║
+║                                                          ║
+║ -- BEGIN ENCRYPTED PAYLOAD --                            ║
+║ 48 65 6C 6C 6F 20 57 6F 72 6C 64 21 20 54 68 69 73       ║
+║ 20 69 73 20 61 20 73 65 63 72 65 74 20 6D 65 73 73       ║
+║ 61 67 65 20 65 6E 63 6F 64 65 64 20 69 6E 20 74 68       ║
+║ 69 73 20 66 69 6C 65 2E                                  ║
+║                                                          ║
+║ // End of payload                                        ║
+║                                                          ║
+║ [EOF]                                                   ║
+╚══════════════════════════════════════════════════════════╝
