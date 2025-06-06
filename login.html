@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SCP Foundation - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .login-container {
+      margin-top: 100px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2rem;
+      border: 2px solid #f44336;
+      box-shadow: 0 0 15px red;
+      background: #000;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      background: #0a0a0a;
+      border: 2px solid #f44336;
+      color: #f44336;
+      font-size: 1rem;
+      font-family: monospace;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background: #f44336;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+      margin-top: 10px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background: #ff0000;
+    }
+
+    #loginStatus {
+      color: crimson;
+      margin-top: 10px;
+      font-family: monospace;
+      text-shadow: 0 0 5px red;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>ADMIN LOGIN</h2>
+    <input type="text" id="loginUser" placeholder="Username (e.g., admin)" />
+    <input type="password" id="loginPass" placeholder="Access Code" />
+    <button onclick="fakeLogin()">Login</button>
+    <div id="loginStatus"></div>
+  </div>
+
+  <script>
+    function fakeLogin() {
+      const user = document.getElementById("loginUser").value;
+      const pass = document.getElementById("loginPass").value;
+      const status = document.getElementById("loginStatus");
+
+      status.textContent = "Verifying credentials...";
+      status.style.color = "#ff4444";
+
+      setTimeout(() => {
+        if (user === "admin" && pass === "scpsecure") {
+          status.textContent = "Access Granted. Redirecting to Admin Dashboard...";
+          status.style.color = "lime";
+          setTimeout(() => {
+            window.location.href = "admin-dashboard.html";
+          }, 2000);
+        } else {
+          status.textContent = "Access Denied. Intrusion attempt logged.";
+          console.warn("⚠️ Unauthorized login attempt detected.");
+          navigator.vibrate?.(300);
+        }
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
