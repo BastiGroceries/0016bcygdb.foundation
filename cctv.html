@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Live Feed - SCP Surveillance</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: lime;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: crimson;
+      text-shadow: 0 0 5px red;
+      margin-top: 1rem;
+    }
+    .camera {
+      margin-top: 20px;
+      border: 4px solid red;
+      width: 80vw;
+      height: 60vh;
+      background: url('https://media.tenor.com/images/e308df7cde94a5f3ab5774c5115f9b3c/tenor.gif') center/cover no-repeat;
+      position: relative;
+      box-shadow: 0 0 15px red;
+      border-radius: 8px;
+    }
+    .overlay {
+      position: absolute;
+      color: lime;
+      font-size: 1rem;
+      left: 10px;
+      top: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-shadow: 0 0 4px lime;
+    }
+  </style>
+</head>
+<body>
+  <h1>SCP Foundation - Surveillance Camera</h1>
+  <div class="camera">
+    <div class="overlay">CAM-13 | Site-██ | LIVE</div>
+  </div>
+</body>
+</html>
