@@ -1,66 +1,73 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SCP Foundation | Home</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>SCP Foundation - Secure Containment Procedures</title>
   <style>
-    body { background-color: #0d0d0d; color: #e5e5e5; font-family: 'Courier New', monospace; }
-    .redacted { background: #111; color: #111; border-radius: 3px; padding: 2px 6px; }
-    .scp-logo { max-width: 120px; filter: grayscale(1) contrast(1.4); }
-    .glitch { color: red; animation: glitch 1s infinite; }
-    @keyframes glitch {
-      0% { text-shadow: 2px 0 red; }
-      20% { text-shadow: -2px 0 red; }
-      40% { text-shadow: 2px 2px red; }
-      60% { text-shadow: -2px -2px red; }
-      80% { text-shadow: 2px -2px red; }
-      100% { text-shadow: 0 0 red; }
+    body {
+      background-color: #0a0a0a;
+      color: #f44336;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0; padding: 2rem;
+      user-select: none;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 15px #ff0000;
+      margin-bottom: 1rem;
+    }
+    a {
+      color: #f44336;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid #f44336;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      display: inline-block;
+      margin: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    a:hover {
+      background-color: #f44336;
+      color: #0a0a0a;
+      box-shadow: 0 0 10px #ff4444;
     }
   </style>
 </head>
-<body class="p-8">
-  <header class="flex items-center justify-between mb-12 border-b border-gray-700 pb-4">
-    <img src="https://scp-wiki.wikidot.com/local--files/component%3Atheme/logo.png" alt="SCP Logo" class="scp-logo">
-    <h1 class="text-3xl font-bold">SCP FOUNDATION</h1>
-  </header>
+<body>
+  <h1>Welcome to the SCP Foundation</h1>
+  <p>Secure, Contain, Protect</p>
+  <nav>
+    <a href="scp-173.html">SCP-173</a>
+    <a href="scp-096.html">SCP-096</a>
+    <a href="admin-dashboard.html">Admin Dashboard</a>
+  </nav>
 
-  <section class="mb-8">
-    <div class="text-red-600 text-sm uppercase">Level 4 Clearance Required</div>
-    <p class="text-xl mt-2 glitch">Secure. Contain. Protect.</p>
-    <p class="mt-4">Welcome to the official SCP Foundation archive. The following is a complete catalog of all current SCP subjects. Unauthorized access will be <span class="redacted">███ ███████</span>.</p>
-  </section>
+  <!-- Ambient Horror Sound -->
+  <audio id="ambientSound" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_36e415f230.mp3?filename=dark-ambient-drone-6396.mp3" autoplay loop muted></audio>
+  <button id="toggleSoundBtn" style="
+    position: fixed; bottom: 20px; right: 20px;
+    background: rgba(255,0,0,0.7);
+    border: none; color: white;
+    padding: 10px 15px; font-weight: bold;
+    cursor: pointer; border-radius: 5px;
+    z-index: 9999;
+  ">🔈 Sound Off</button>
 
-  <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <a href="scp/scp-001.html" class="p-4 bg-gray-900 border border-gray-700 hover:border-red-600 transition">
-      <h2 class="text-lg font-bold">SCP-001</h2>
-      <p class="text-sm">Top-Secret Origins</p>
-    </a>
-    <a href="scp/scp-049.html" class="p-4 bg-gray-900 border border-gray-700 hover:border-red-600 transition">
-      <h2 class="text-lg font-bold">SCP-049</h2>
-      <p class="text-sm">The Plague Doctor</p>
-    </a>
-    <a href="scp/scp-096.html" class="p-4 bg-gray-900 border border-gray-700 hover:border-red-600 transition">
-      <h2 class="text-lg font-bold">SCP-096</h2>
-      <p class="text-sm">Shy Guy</p>
-    </a>
-    <a href="scp/scp-106.html" class="p-4 bg-gray-900 border border-gray-700 hover:border-red-600 transition">
-      <h2 class="text-lg font-bold">SCP-106</h2>
-      <p class="text-sm">The Old Man</p>
-    </a>
-    <a href="scp/scp-173.html" class="p-4 bg-gray-900 border border-gray-700 hover:border-red-600 transition">
-      <h2 class="text-lg font-bold">SCP-173</h2>
-      <p class="text-sm">The Sculpture</p>
-    </a>
-    <a href="scp/scp-682.html" class="p-4 bg-gray-900 border border-gray-700 hover:border-red-600 transition">
-      <h2 class="text-lg font-bold">SCP-682</h2>
-      <p class="text-sm">Hard to Destroy Reptile</p>
-    </a>
-  </section>
+  <script>
+    const ambientSound = document.getElementById('ambientSound');
+    const toggleBtn = document.getElementById('toggleSoundBtn');
 
-  <footer class="mt-16 text-xs text-gray-500 border-t border-gray-700 pt-4">
-    <p>This SCP Foundation website is a fictional horror archive designed for entertainment. © 2025 Secure. Contain. Protect.</p>
-  </footer>
+    toggleBtn.addEventListener('click', () => {
+      if (ambientSound.muted) {
+        ambientSound.muted = false;
+        toggleBtn.textContent = '🔇 Sound On';
+      } else {
+        ambientSound.muted = true;
+        toggleBtn.textContent = '🔈 Sound Off';
+      }
+    });
+  </script>
 </body>
 </html>
