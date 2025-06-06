@@ -54,11 +54,38 @@
   <div class="console" id="console"></div>
   <div class="alert">🛑 Clearance Level 5 Required</div>
 
+  <audio id="ambientSound" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_36e415f230.mp3?filename=dark-ambient-drone-6396.mp3" autoplay loop muted></audio>
+  <button id="toggleSoundBtn" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255,0,0,0.7);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 9999;
+  ">🔈 Sound Off</button>
+
   <audio id="typingSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3" preload="auto"></audio>
 
   <script>
     const consoleEl = document.getElementById('console');
     const typingSound = document.getElementById('typingSound');
+    const ambientSound = document.getElementById('ambientSound');
+    const toggleBtn = document.getElementById('toggleSoundBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      if (ambientSound.muted) {
+        ambientSound.muted = false;
+        toggleBtn.textContent = '🔇 Sound On';
+      } else {
+        ambientSound.muted = true;
+        toggleBtn.textContent = '🔈 Sound Off';
+      }
+    });
 
     const messages = [
       "> Logging into Level 5 Admin Access...",
@@ -88,12 +115,12 @@
         charIndex++;
         consoleEl.scrollTop = consoleEl.scrollHeight;
         playTypingSound();
-        setTimeout(typeNextChar, 50); // typing speed in ms
+        setTimeout(typeNextChar, 50);
       } else {
         consoleEl.innerHTML += "<br>";
         messageIndex++;
         charIndex = 0;
-        setTimeout(typeNextChar, 800); // delay between lines
+        setTimeout(typeNextChar, 800);
       }
     }
 
