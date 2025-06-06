@@ -72,5 +72,31 @@
     The page you are looking for has been lost in the anomalous zones. Please return to the safety of the Foundation homepage.
   </p>
   <a href="index.html">Return Home</a>
+
+  <!-- Ambient Horror Sound -->
+  <audio id="ambientSound" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_36e415f230.mp3?filename=dark-ambient-drone-6396.mp3" autoplay loop muted></audio>
+  <button id="toggleSoundBtn" style="
+    position: fixed; bottom: 20px; right: 20px;
+    background: rgba(255,0,0,0.7);
+    border: none; color: white;
+    padding: 10px 15px; font-weight: bold;
+    cursor: pointer; border-radius: 5px;
+    z-index: 9999;
+  ">🔈 Sound Off</button>
+
+  <script>
+    const ambientSound = document.getElementById('ambientSound');
+    const toggleBtn = document.getElementById('toggleSoundBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      if (ambientSound.muted) {
+        ambientSound.muted = false;
+        toggleBtn.textContent = '🔇 Sound On';
+      } else {
+        ambientSound.muted = true;
+        toggleBtn.textContent = '🔈 Sound Off';
+      }
+    });
+  </script>
 </body>
 </html>
