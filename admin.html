@@ -32,6 +32,7 @@
       white-space: pre-wrap;
       font-size: 1rem;
       line-height: 1.3;
+      user-select: text;
     }
     .alert {
       color: red;
@@ -44,25 +45,16 @@
       text-align: center;
       text-transform: uppercase;
       box-shadow: 0 0 10px red;
+      user-select: none;
     }
   </style>
 </head>
 <body>
   <h1>🔐 SCP Secure Admin Console</h1>
-  <div class="console" id="console">
-    > Logging into Level 5 Admin Access...<br>
-    > Access Denied.<br>
-    > Attempting override...<br>
-    > [CRITICAL] Intrusion detected.<br>
-    > Locking all external terminals...<br>
-    > Alerting O5 Command...<br>
-    > Access revoked.<br>
-    > Disconnecting session...<br>
-  </div>
+  <div class="console" id="console"></div>
   <div class="alert">🛑 Clearance Level 5 Required</div>
 
   <script>
-    // Simulate terminal typing
     const consoleEl = document.getElementById('console');
     const messages = [
       "> Logging into Level 5 Admin Access...",
@@ -75,12 +67,27 @@
       "> Disconnecting session..."
     ];
 
-    let i = 0;
-    consoleEl.innerHTML = '';
+    let messageIndex = 0;
+    let charIndex = 0;
 
-    function typeMessage() {
-      if (i < messages.length) {
-        consoleEl.innerHTML += messages[i] + '<br>';
+    function typeNextChar() {
+      if (messageIndex >= messages.length) return;
+      const message = messages[messageIndex];
+
+      if (charIndex < message.length) {
+        consoleEl.innerHTML += message.charAt(charIndex);
+        charIndex++;
         consoleEl.scrollTop = consoleEl.scrollHeight;
-        i++;
-        setTimeout(typeMessage, 1200
+        setTimeout(typeNextChar, 50); // typing speed in ms
+      } else {
+        consoleEl.innerHTML += "<br>";
+        messageIndex++;
+        charIndex = 0;
+        setTimeout(typeNextChar, 800); // delay between lines
+      }
+    }
+
+    typeNextChar();
+  </script>
+</body>
+</html>
